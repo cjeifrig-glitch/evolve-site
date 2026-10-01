@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Evolve: the screen time blocker with no ignore button</title>
+<meta name="description" content="Evolve blocks the apps that pull you in. To get one back you hold the screen. One hold is one minute, and every minute costs more. Free on the App Store. No account, nothing collected.">
+<meta name="apple-itunes-app" content="app-id=6752591931">
+<meta name="theme-color" content="#080A10">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Evolve: the screen time blocker with no ignore button">
+<meta property="og:description" content="Hold the screen to unblock your apps. One hold is one minute, and every minute costs more. Free. No account. Nothing collected.">
+<meta property="og:image" content="https://evolvescreentime.com/assets/og.jpg">
+<meta property="og:url" content="https://evolvescreentime.com/">
+<link rel="canonical" href="https://evolvescreentime.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<style>
+  :root {
+    --bg: #080A10; --glow: #131E2E; --line: rgba(255,255,255,.09);
+    --text: #F4F5F7; --soft: #B0B8C6; --dim: #6C7586;
+    --gold: #D5AA69; --gold-bright: #F8DDA5; --gold-deep: #9A713C; --slate: #627EB2;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(1100px 760px at 50% -6%, var(--glow), transparent 70%);
+    background-repeat: no-repeat;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; }
+  header img { height: 34px; width: auto; display: block; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600;
+    padding: 13px 22px; border-radius: 999px; background: #fff; color: #0B0D12; font-size: 16px;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(213,170,105,.22); }
+  .btn.small { padding: 9px 16px; font-size: 14px; }
+  .btn.ghost { background: transparent; color: var(--text); box-shadow: inset 0 0 0 1px rgba(248,221,165,.55); }
+  h1, h2, h3 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 0; letter-spacing: -.022em; text-wrap: balance; }
+  h1 { font-size: clamp(40px, 6.4vw, 68px); line-height: 1.04; font-weight: 600; }
+  h2 { font-size: clamp(30px, 4.4vw, 46px); line-height: 1.08; font-weight: 600; }
+  h3 { font-size: 21px; line-height: 1.25; font-weight: 600; letter-spacing: -.01em; }
+  .gold { background: linear-gradient(180deg, var(--gold-bright), var(--gold) 70%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .kicker { font-size: 12.5px; letter-spacing: .26em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin: 0 0 16px; }
+  p { margin: 0; color: var(--soft); text-wrap: pretty; }
+  .lead { font-size: clamp(18px, 2.1vw, 21px); line-height: 1.5; max-width: 34em; }
+  .fine { font-size: 14px; color: var(--dim); }
+  section { padding: 84px 0; border-top: 1px solid var(--line); }
+
+  .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; padding: 40px 0 88px; }
+  .hero .cta { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin: 30px 0 16px; }
+  .phone {
+    width: min(300px, 74vw); aspect-ratio: 600 / 1220; border-radius: 40px; overflow: hidden; margin: 0 auto;
+    background: #05060A; box-shadow: 0 0 0 1px rgba(213,170,105,.42), 0 0 0 9px #06070A, 0 0 0 10px rgba(213,170,105,.25), 0 30px 90px rgba(213,170,105,.16);
+  }
+  .phone img, .phone video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 44px; border-top: 1px solid var(--line); }
+  .three > div { padding: 28px 28px 6px 0; }
+  .three > div + div { padding-left: 28px; border-left: 1px solid var(--line); }
+  .three .n { font-size: 12.5px; letter-spacing: .26em; color: var(--gold); margin-bottom: 14px; }
+  .three p { margin-top: 10px; font-size: 16px; }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 48px; }
+  .steps .phone { width: 100%; border-radius: 30px; box-shadow: 0 0 0 1px rgba(213,170,105,.34), 0 20px 60px rgba(0,0,0,.5); }
+  .steps h3 { margin-top: 22px; }
+  .steps p { margin-top: 8px; font-size: 15.5px; }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  table.price { width: 100%; border-collapse: collapse; font-size: 19px; font-variant-numeric: tabular-nums; }
+  table.price td { padding: 16px 0; border-bottom: 1px solid var(--line); }
+  table.price td:last-child { text-align: right; color: var(--gold-bright); font-weight: 600; }
+  .months img { width: 100%; max-width: 420px; display: block; margin: 0 auto; border-radius: 18px; }
+  .pair { display: flex; gap: 22px; justify-content: center; }
+  .pair .phone { width: min(230px, 40vw); border-radius: 32px; }
+
+  .private { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 40px; }
+  .private div { border-top: 1px solid rgba(213,170,105,.4); padding-top: 18px; }
+  .private p { margin-top: 6px; font-size: 15.5px; }
+
+  .note { max-width: 660px; }
+  .note p { font-size: 19px; line-height: 1.62; color: #D7DBE3; margin-top: 18px; }
+  .note p.kicker { font-size: 12.5px; line-height: 1.55; color: var(--gold); margin-top: 0; }
+  .note .sig { color: var(--gold-bright); margin-top: 26px; font-size: 17px; }
+
+  details { border-bottom: 1px solid var(--line); padding: 18px 0; }
+  summary { cursor: pointer; font-weight: 600; font-size: 18px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--gold); font-weight: 400; }
+  details[open] summary::after { content: "\2212"; }
+  details p { margin-top: 10px; max-width: 46em; }
+
+  .end { text-align: center; }
+  .end h2 { max-width: 14em; margin: 0 auto; }
+  .end .cta { margin-top: 30px; }
+  footer { border-top: 1px solid var(--line); padding: 30px 0 46px; display: flex; flex-wrap: wrap; gap: 10px 26px; justify-content: space-between; font-size: 14px; color: var(--dim); }
+  footer a { text-decoration: none; color: var(--soft); }
+  footer a:hover { color: var(--gold-bright); }
+
+  @media (max-width: 860px) {
+    .hero, .split { grid-template-columns: 1fr; gap: 40px; }
+    .hero { padding-top: 16px; text-align: center; }
+    .hero .cta { justify-content: center; }
+    .hero .lead { margin: 0 auto; }
+    .three, .private { grid-template-columns: 1fr; }
+    .three > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+    .steps { grid-template-columns: 1fr 1fr; gap: 34px 18px; }
+    section { padding: 64px 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img src="assets/wordmark.png" alt="Evolve">
+    <a class="btn small ghost" href="https://apps.apple.com/us/app/evolve-screen-time-blocker/id6752591931">Get the app</a>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>The screen time blocker with <span class="gold">no ignore button.</span></h1>
+      <p class="lead" style="margin-top:22px">Pick the apps that pull you in. Evolve blocks them. To get one back you hold the screen. One hold is one minute, and every minute costs more than the last.</p>
+      <div class="cta">
+        <a class="btn" href="https://apps.apple.com/us/app/evolve-screen-time-blocker/id6752591931">Download on the App Store</a>
+      </div>
+      <p class="fine">Free. No account. Nothing collected. iPhone, iOS 18 or later.</p>
+    </div>
+    <div class="phone">
+      <video autoplay muted loop playsinline poster="assets/hold.jpg" aria-label="Holding the screen in Evolve to unblock two minutes">
+        <source src="assets/hold.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <section>
+    <p class="kicker">Why limits fail</p>
+    <h2>You already have a screen time limit. <span class="gold">You tap through it.</span></h2>
+    <div class="three">
+      <div><div class="n">ONE</div><h3>It has an Ignore button.</h3><p>One tap and the limit is gone for the day. You have pressed it. So has everyone.</p></div>
+      <div><div class="n">TWO</div><h3>It is all or nothing.</h3><p>Locked out completely or let back in completely. Nothing in between asks whether this minute is worth it.</p></div>
+      <div><div class="n">THREE</div><h3>The time is free.</h3><p>Nobody rations what costs nothing. So the minutes go and you never feel them leave.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">How it works</p>
+    <h2>A price, <span class="gold">not a wall.</span></h2>
+    <div class="steps">
+      <div><div class="phone"><img src="assets/apps.jpg" alt="Evolve showing which apps took your time today" loading="lazy"></div><h3>Pick your apps</h3><p>Choose the ones that pull you in. Evolve blocks them.</p></div>
+      <div><div class="phone"><img src="assets/block.jpg" alt="Evolve block screen: Not now, Instagram. 2nd time you've reached for it today." loading="lazy"></div><h3>It steps in</h3><p>Reach for one and Evolve stops you, and tells you how many times you have reached for it today.</p></div>
+      <div><div class="phone"><img src="assets/unblock.jpg" alt="Evolve unblock screen with two minutes held" loading="lazy"></div><h3>Hold to unblock</h3><p>One hold is one minute. The first costs one second, the second costs two, the third costs three.</p></div>
+      <div><div class="phone"><img src="assets/home.jpg" alt="Evolve home screen showing 3 hours 31 minutes of screen time today" loading="lazy"></div><h3>It locks again</h3><p>When your minutes run out the apps block themselves. You see where the day went, hour by hour.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="split">
+      <div>
+        <p class="kicker">The price list</p>
+        <h2>A quick check stays cheap. <span class="gold">An hour never sneaks up on you.</span></h2>
+        <p class="lead" style="margin-top:20px">You can always get in. You just cannot do it on autopilot. This is what one sitting costs, paid by holding the screen.</p>
+      </div>
+      <div>
+        <table class="price" aria-label="Hold time by minutes unblocked">
+          <tr><td>1 minute</td><td>1 sec</td></tr>
+          <tr><td>5 minutes</td><td>15 sec</td></tr>
+          <tr><td>10 minutes</td><td>55 sec</td></tr>
+          <tr><td>30 minutes</td><td>7 min 45 sec</td></tr>
+          <tr><td>1 hour</td><td>22 min 45 sec</td></tr>
+        </table>
+        <p class="fine" style="margin-top:14px">Hard mode on a light day. Heavier days start higher. Easy mode is gentler.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="split">
+      <div class="months"><img src="assets/months.jpg" alt="A grid of 660 dots, one per month of life from age 18. Most are greyed out, a block is blue, a few are gold." loading="lazy"></div>
+      <div>
+        <p class="kicker">What it really costs</p>
+        <h2>The rest of your life, <span class="gold">in months.</span></h2>
+        <p class="lead" style="margin-top:20px">If you are 18, about 223 months are left after sleep, school, work and chores. At the average pace, 93 percent of them go to a screen. That is 17 years. Cut it to two hours a day and 13 of those years come back.</p>
+        <p class="fine" style="margin-top:14px">Evolve works this out for your own age when you open it. Screen time: Common Sense Media, 2021. Month math: Dino Ambrosi.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">Private</p>
+    <h2>No account. <span class="gold">Nothing collected.</span></h2>
+    <div class="private">
+      <div><h3>Nothing to sign up for</h3><p>No email, no password, no profile.</p></div>
+      <div><h3>Nothing leaves the phone</h3><p>Your screen time is read on your device and stays there.</p></div>
+      <div><h3>Nothing sold</h3><p>No ads, no trackers, no analytics.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="note">
+      <p class="kicker">From the founder</p>
+      <h2>Why I built this</h2>
+      <p>I'm Charlie. I'm a senior in high school. A couple of years ago I scrolled for five hours in one sitting and I felt awful after. I downloaded a lot of screen time apps and I got around every one of them.</p>
+      <p>The first version of Evolve asked you to type why you wanted to open an app. It worked for a while, and then I caught myself lying to it. So I rebuilt it around the one thing I could not lie to, which is holding a button.</p>
+      <p>Evolve is free and it collects nothing. It is built for people who already want to change. I hope it helps you the way it helped me.</p>
+      <p class="sig">Charlie Eifrig</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">Questions</p>
+    <h2>Fair questions</h2>
+    <div style="margin-top:26px">
+      <details><summary>Is it really free?</summary><p>Yes. Evolve is free to download and there is nothing to buy inside the app.</p></details>
+      <details><summary>Can I get around it?</summary><p>If you are determined to, yes. Evolve does not pretend to be unbeatable. It is here for the moments when you are not determined, which is most of them.</p></details>
+      <details><summary>What is the difference between Easy and Hard?</summary><p>Hard is the full price list above, with a 90 second cooldown after each session. Easy keeps every hold short and has no cooldown. Switching from Hard to Easy takes a ten second hold.</p></details>
+      <details><summary>What does Evolve know about me?</summary><p>Nothing leaves your phone. There is no account and no server. Your screen time is drawn by Apple on your device.</p></details>
+      <details><summary>What do I need?</summary><p>An iPhone on iOS 18 or later.</p></details>
+    </div>
+  </section>
+
+  <section class="end">
+    <h2>Every minute should feel <span class="gold">earned.</span></h2>
+    <div class="cta"><a class="btn" href="https://apps.apple.com/us/app/evolve-screen-time-blocker/id6752591931">Download on the App Store</a></div>
+    <p class="fine" style="margin-top:16px">Or search the App Store for Evolve Screen Time.</p>
+  </section>
+
+  <footer>
+    <span>© 2026 Charles Eifrig</span>
+    <span><a href="privacy-policy.html">Privacy</a> &nbsp;·&nbsp; <a href="mailto:evolvescreentime@gmail.com">evolvescreentime@gmail.com</a></span>
+  </footer>
+</div>
+</body>
+</html>
